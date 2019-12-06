@@ -2,6 +2,33 @@
 
 using namespace std;
 
+bool find_pair(int *nums, int n = 6)
+{
+    int string = 1;
+    for (int i = 0; i < n - 1; i++)
+    {
+        if (nums[i] == nums[i+1])
+        {
+            string += 1;
+        }
+        else if(string == 2)
+        {
+            return true;
+        }
+        else
+        {
+            string = 1;
+        }
+    }
+
+    if (string == 2)
+    {
+        return true;
+    }
+
+    return false;
+}
+
 int main()
 {
     int count = 0;
@@ -40,17 +67,13 @@ int main()
                                 break;
                             }
 
-                            if (i == j ||
-                                j == k ||
-                                k == l ||
-                                l == m ||
-                                m == n)
+                            int nums[6] = {i,j,k,l,m,n};
+                            if (find_pair(nums))
                             {
                                 // contains repeating digits
                                 count += 1;
+                                cout << x << endl;
                             }
-
-                            cout << x << endl;
                         }
                     }
                 }
