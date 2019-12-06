@@ -106,6 +106,82 @@ int run_program(std::vector<int> &memory)
                 i += 1;
                 break;
 
+            case 5:
+                if (inst.par_mode[1])
+                    b = memory[i + 2];
+                else
+                    b = memory[memory[i + 2]];
+
+                if (a)
+                {
+                    i = b;
+                    i--;
+                }
+                else
+                {
+                    i += 2;
+                }
+
+                break;
+
+            case 6:
+                if (inst.par_mode[1])
+                    b = memory[i + 2];
+                else
+                    b = memory[memory[i + 2]];
+
+                if (!a)
+                {
+                    i = b;
+                    i--;
+                }
+                else
+                {
+                    i += 2;
+                }
+
+                break;
+
+            case 7:
+                if (inst.par_mode[1])
+                    b = memory[i + 2];
+                else
+                    b = memory[memory[i + 2]];
+
+                c = memory[i + 3];
+
+                if (a < b)
+                {
+                    memory[c] = 1;
+                }
+                else
+                {
+                    memory[c] = 0;
+                }
+
+                i += 3;
+                break;
+
+            case 8:
+                if (inst.par_mode[1])
+                    b = memory[i + 2];
+                else
+                    b = memory[memory[i + 2]];
+
+                c = memory[i + 3];
+
+                if (a == b)
+                {
+                    memory[c] = 1;
+                }
+                else
+                {
+                    memory[c] = 0;
+                }
+
+                i += 3;
+                break;
+
             case 99:
                 halt = true;
                 break;
